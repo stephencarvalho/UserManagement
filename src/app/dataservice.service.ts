@@ -28,44 +28,20 @@ export class DataserviceService {
     },
   ];
 
-  getUsers(): Observable<User[]> {
-    let ids = this.UserData.map((obj)=> {
-      console.log("objects="+obj);
-      return obj;
-    });
-    let arr = [...ids];
+  // addUsers(): Observable<User[]>  {
+  //   var test: User = {
+  //     id: 3,
+  //     email: 'abc@test.com',
+  //     firstName: 'Jim',
+  //     lastName: 'Rambo',
+  //     role: 'Doctor',
+  //     status: 'Active'
+  //   };
+  //   this.UserData.push(test);
+  //   let ids = this.UserData.map((obj)=> {
+  //     return obj;
+  //   });
+  //   return of(ids);
+  // }
 
-    console.log(arr);
-    return of(arr);
-  }
-
-  addUsers(): Observable<User[]>  {
-    var test: User = {
-      id: 3,
-      email: 'abc@test.com',
-      firstName: 'Jim',
-      lastName: 'Rambo',
-      role: 'Doctor',
-      status: 'Active'
-    };
-    this.UserData.push(test);
-    console.log("User Data"+this.UserData);
-    let ids = this.UserData.map((obj)=> {
-      console.log("objects="+obj);
-      return obj;
-    });
-    let arr = [...ids];
-
-    console.log(arr);
-    return of(arr);
-  }
-
-  deleteUsers() {
-
-  }
-
-  editUsers() {
-
-  }
-  
 }
