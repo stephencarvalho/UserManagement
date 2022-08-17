@@ -36,7 +36,7 @@ export class UserComponent implements OnInit {
   openDialog(action,obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(EditUserModalComponent, {
-      width: '250px',
+      width: '300px',
       data:obj
     });
 

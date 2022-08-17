@@ -6,27 +6,33 @@ import { User } from './model/user.model';
   providedIn: 'root'
 })
 export class DataserviceService {
-
+  
   constructor() { }
-
+  
   UserData: User[] = [
-    
+    {
+      id : 1,	
+      email: "patsywaters@gmail.com",	
+      firstName: "Patsy",	
+      lastName: "Waters",
+      role:"doctor",	
+      status: "active"
+    },
+    {
+      id : 2,	
+      email: "nolan007@hotmail.com",	
+      firstName: "Della",	
+      lastName: "Nolan",
+      role:"admin",	
+      status: "inactive"
+    },
+    {
+      id : 3,	
+      email: "garry.hudson@yahoo.com",	
+      firstName: "Gary",	
+      lastName: "Hudson",
+      role:"accountant",	
+      status: "active"
+    }
   ];
-
-  // addUsers(): Observable<User[]>  {
-  //   var test: User = {
-  //     id: 3,
-  //     email: 'abc@test.com',
-  //     firstName: 'Jim',
-  //     lastName: 'Rambo',
-  //     role: 'Doctor',
-  //     status: 'Active'
-  //   };
-  //   this.UserData.push(test);
-  //   let ids = this.UserData.map((obj)=> {
-  //     return obj;
-  //   });
-  //   return of(ids);
-  // }
-
 }
