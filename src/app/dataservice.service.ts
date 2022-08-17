@@ -10,22 +10,7 @@ export class DataserviceService {
   constructor() { }
 
   UserData: User[] = [
-    {
-      id: 1,
-      email: 'Mellie',
-      firstName: 'Gabbott',
-      lastName: 'mgabbott0@indiatimes.com',
-      role: 'Female',
-      status: 'Support'
-    },
-    {
-      id: 2,
-      email: 'Mellie',
-      firstName: 'Gabbott',
-      lastName: 'mgabbott0@indiatimes.com',
-      role: 'Female',
-      status: 'Support'
-    },
+    
   ];
 
   // addUsers(): Observable<User[]>  {
