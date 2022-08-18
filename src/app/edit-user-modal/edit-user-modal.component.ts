@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, NG_VALIDATORS } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataserviceService } from '../dataservice.service';
 import { Select } from '../model/select.model';
@@ -11,10 +12,12 @@ import { UserComponent } from '../user/user.component';
   styleUrls: ['./edit-user-modal.component.css']
 })
 export class EditUserModalComponent implements OnInit {
-  
+  // @ViewChild('userForm', {static: false}) userForm: FormControl;
   action:string;
   local_data:any;
   email:string;
+  emailExists: boolean;
+  testEmailValidity: boolean = true;
   
   roles: Select[] = [
     {value: 'accountant', label: 'Accountant'},
@@ -47,9 +50,7 @@ export class EditUserModalComponent implements OnInit {
     
     checkEmail(event: any) {
       this.email = event.target.value;
-      this.dataService.UserData.find((obj) => {
-        return obj.email === this.email;
-      });
+      this.emailExists = this.dataService.UserData.some((obj) => obj.email === this.email);
     }
     
     ngOnInit(): void {
