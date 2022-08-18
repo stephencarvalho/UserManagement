@@ -54,7 +54,7 @@ export class UserComponent implements OnInit {
   addRowData(row_obj){
     var d = new Date();
     this.dataSource.push({
-      id:d.getTime(),
+      id:this.getnextId(),
       email: row_obj.email,
       firstName: row_obj.firstName,
       lastName: row_obj.lastName,
@@ -80,6 +80,19 @@ export class UserComponent implements OnInit {
     this.dataSource = this.dataSource.filter((value,key)=>{
       return value.id != row_obj.id;
     });
+  }
+
+  getnextId(): number {
+    let highest = 0;
+    this.dataService.UserData.forEach(function (item) {
+      if (highest === 0) {
+        highest = item.id;
+      }
+      if (highest < item.id) {
+        highest = item.id;
+      }
+    });
+    return highest + 1;
   }
 
 }
