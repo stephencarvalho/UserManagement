@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/styles/global.scss';
+html, body { height: 100%; }
+body { 
+    margin: 0; 
+    /* font-family: "new-hero-regular";  */
+}
+
+@font-face {
+    font-family: "new-hero-regular";
+    src: url(assets/fonts/Hero-New-Regular.otf) format("opentype");
+}
+@font-face {
+    font-family: "new-hero-extra-bold";
+    src: url(assets/fonts/Hero-New-ExtraBold.otf) format("opentype");
+}
+@font-face {
+    font-family: "new-hero-bold";
+    src: url(assets/fonts/Hero-New-Bold.otf) format("opentype");
+}
+
+
+.f {
+    font-family: "new-hero-regular";
+}
+.fb {
+    font-family: "new-hero-bold";
+}
+.fxb {
+    font-family: "new-hero-extra-bold";
+}
+
+
+/* material overrides */
+.mat-card {
+    padding-top:none !important;
+    border-radius: 0px !important;
+}
+
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: 0px 1px 5px 2px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.mat-button, .mat-flat-button {
+    border-radius: 0px !important;
+}
+tr.mat-row {
+    height: 72px !important;
+    font-family: "new-hero-regular";
+}
+th.mat-header-cell {
+    font-family: "new-hero-bold";
+    color: $primary-midnight-100;
+}
+td.mat-cell {
+    color: $primary-midnight-50;
+}
+.mat-form-field-outline-start {
+    border-radius: 2px 0 0 2px !important;
+    min-width: 28px !important;
+  }
+  
+.mat-form-field-outline-end {
+    border-radius: 2px 0 0 2px !important;
+  }
+  .mat-form-field {
+    font-family: 'new-hero-regular' !important;
+    width: 100%;
+  }
+  .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 4px 0 9px 0;
+}
+.mat-form-field-appearance-outline .mat-form-field-label {
+    top: 20px;
+}
+.mat-select-arrow {
+    position: relative;
+    top: 4px;
+}
+.mat-hint {
+    color: $secondary-sunset-100;
+}

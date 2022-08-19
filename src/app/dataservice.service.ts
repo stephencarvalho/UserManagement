@@ -8,6 +8,15 @@ import { User } from './model/user.model';
 export class DataserviceService {
   
   constructor() { }
+
+  imgArray = ["../assets/img/girl1.png",
+  "../assets/img/girl2.png",
+  "../assets/img/girl3.png",
+  "../assets/img/man1.png",
+  "../assets/img/man2.png",
+  "../assets/img/man3.png",
+  "../assets/img/man4.png"
+];
   
   UserData: User[] = [
     {
@@ -16,7 +25,8 @@ export class DataserviceService {
       firstName: "Patsy",	
       lastName: "Waters",
       role:"doctor",	
-      status: "active"
+      status: "active",
+      img: this.randomImage
     },
     {
       id : 2,	
@@ -24,7 +34,8 @@ export class DataserviceService {
       firstName: "Della",	
       lastName: "Nolan",
       role:"admin",	
-      status: "inactive"
+      status: "inactive",
+      img: this.randomImage
     },
     {
       id : 3,	
@@ -32,7 +43,12 @@ export class DataserviceService {
       firstName: "Gary",	
       lastName: "Hudson",
       role:"accountant",	
-      status: "active"
+      status: "active",
+      img: this.randomImage
     }
   ];
+  
+get randomImage() {
+  return this.imgArray[Math.floor(Math.random()*this.imgArray.length)];
+}
 }

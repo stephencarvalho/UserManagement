@@ -1,5 +1,5 @@
 import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NG_VALIDATORS } from '@angular/forms';
+import { FormControl, FormGroup, NgForm, NG_VALIDATORS } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataserviceService } from '../dataservice.service';
 import { Select } from '../model/select.model';
@@ -9,10 +9,10 @@ import { UserComponent } from '../user/user.component';
 @Component({
   selector: 'app-edit-user-modal',
   templateUrl: './edit-user-modal.component.html',
-  styleUrls: ['./edit-user-modal.component.css']
+  styleUrls: ['./edit-user-modal.component.scss']
 })
 export class EditUserModalComponent implements OnInit {
-  // @ViewChild('userForm', {static: false}) userForm: FormControl;
+  @ViewChild('userForm', {static: false}) userForm: NgForm;
   action:string;
   local_data:any;
   email:string;

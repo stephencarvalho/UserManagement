@@ -3,34 +3,41 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
 import { DataserviceService } from '../dataservice.service';
 import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
-import { User } from '../model/user.model';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-
+  
   @ViewChild(MatTable,{static:true}) table: MatTable<any>;
-
+  
+  totalUsers: number = 3;
+  
   displayedColumns: string[] = [
     'id',
-    'email',
-    'firstName',
+    'user',
     'role',
     'status',
     'edit-delete'
   ];
-
-  
-  dataSource = this.dataService.UserData;
-
-  constructor(private dataService: DataserviceService,
-    public dialog: MatDialog) { }
   
   
 
+// get randomImage() {
+//   return this.imgArray[Math.floor(Math.random()*this.imgArray.length)];
+// }
+
+dataSource = this.dataService.UserData;
+
+constructor(private dataService: DataserviceService,
+  public dialog: MatDialog) { }
+  
+  // get totalUsers() {
+  //   return 
+  // }
+  
   ngOnInit(): void {
   }
   openDialog(action,obj) {
@@ -39,7 +46,7 @@ export class UserComponent implements OnInit {
       width: '300px',
       data:obj
     });
-
+    
     dialogRef.afterClosed().subscribe(result => {
       if(result.event == 'Add'){
         this.addRowData(result.data);
@@ -50,7 +57,7 @@ export class UserComponent implements OnInit {
       }
     });
   }
-
+  
   addRowData(row_obj){
     var d = new Date();
     this.dataSource.push({
@@ -59,9 +66,12 @@ export class UserComponent implements OnInit {
       firstName: row_obj.firstName,
       lastName: row_obj.lastName,
       role: row_obj.role,
-      status: row_obj.status
+      status: row_obj.status,
+      img: this.dataService.randomImage
     });
+    console.log(this.dataService.UserData);
     this.table.renderRows();
+    ++this.totalUsers;
     
   }
   updateRowData(row_obj){
@@ -73,15 +83,27 @@ export class UserComponent implements OnInit {
         value.role = row_obj.role;
         value.status = row_obj.status;
       }
+      console.log(this.dataService.UserData);
       return true;
     });
   }
   deleteRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
-      return value.id != row_obj.id;
-    });
+    let index;
+    for(let data of this.dataSource)
+    {
+      let temp = 0;
+      if(data.id==row_obj.id) {
+        index = temp;
+        this.dataSource.splice(index, 1);
+      }
+      temp++;
+    }
+    console.log(this.dataSource);
+    this.totalUsers--;
+    this.table.renderRows();
+    return this.dataSource;
   }
-
+  
   getnextId(): number {
     let highest = 0;
     this.dataService.UserData.forEach(function (item) {
@@ -94,5 +116,5 @@ export class UserComponent implements OnInit {
     });
     return highest + 1;
   }
-
+  
 }
