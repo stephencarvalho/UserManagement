@@ -1,5 +1,6 @@
 <div >
-    <div class="fxb">{{action}} User</div>
+    <div class="fxb modal-header">{{action}} User</div>
+    <mat-divider class="heading-divider"></mat-divider>
     <div mat-dialog-content>
         <div *ngIf="action != 'Delete'; else elseTemplate">
             <form #userForm="ngForm"> 
@@ -75,25 +76,47 @@
     </form>
 </div>
 <ng-template #elseTemplate>
-    Sure to delete <b>{{local_data.name}}</b>?
+    <div class="delete-text">
+        Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b> account?
+    </div>
+    <div class="delete-profile f">
+        <div fxLayout="row" fxLayoutGap="10px">
+            <div>
+                <img [src]='local_data.img' class="profile-img" alt="">
+            </div>
+            <div fxLayout="column">
+                <div class="name">
+                    {{local_data.firstName}} {{local_data.lastName}}
+                </div>
+                <div class="email">
+                    {{local_data.email}} 
+                </div>
+                <div fxLayout="row">
+                    <div>{{local_data.role | titlecase}} </div>
+                    <mat-divider class="verticalDivider" [vertical]="true"></mat-divider>
+                    <div> {{local_data.status | titlecase}} </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 </ng-template>
 </div>
+<mat-divider></mat-divider>
 <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
     <div>
-        <button mat-button (click)="doAction()" [disabled]="emailExists && action=='Add'" type="submit" class="submit">{{action}}
+        <button mat-button (click)="doAction()" [disabled]="emailExists && action=='Add'" type="submit" class="submit fb">{{action}}
             <span class="material-symbols-outlined action-icon">
                 {{action == "Add"? "add_circle": action == "Update" ? "update" : "delete"}}
-            </span></button>
+            </span>
+        </button>
     </div>
     <div>
-        <button mat-button (click)="closeDialog()" class="cancel">Cancel 
+        <button mat-button (click)="closeDialog()" class="cancel fb">Cancel 
             <span class="material-symbols-outlined action-icon">
                 cancel
             </span>
         </button>
     </div>
-    
-    
-    </div>
-    
+</div>
 </div>

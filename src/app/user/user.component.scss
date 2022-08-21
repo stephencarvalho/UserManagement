@@ -1,8 +1,5 @@
 @import '../../assets/styles/global.scss';
-:host {
-    /* display: block; */
-    font-family: "new-hero-regular";
-}
+
 table {
     width: 100%;
 }
@@ -50,4 +47,17 @@ table {
 .id {
     color: $light-grey;
 }
-
+.logo {
+    width: 170px;
+}
+mat-toolbar {
+    background-color: #fff5f9;
+    z-index: 100;
+}
+.toolbar-divider {
+    
+    margin-bottom: 40px;
+}
+.responsive {    
+    overflow-x: auto;
+}
