@@ -15,7 +15,7 @@
                     #email="ngModel" 
                     email> 
                     <mat-error *ngIf="!email.valid">Enter a valid Email</mat-error> 
-                    <mat-hint *ngIf="emailExists && action=='Add'">This email already exists</mat-hint> 
+                    <mat-hint *ngIf="emailExists">This email already exists</mat-hint> 
                 </mat-form-field>
                 
                 <label>First Name<span class="required">*</span></label>
@@ -73,11 +73,28 @@
             </mat-select>
             <mat-error *ngIf="!status.valid">Status is Required</mat-error>
         </mat-form-field>
+        <mat-divider></mat-divider>
+        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+            <div>
+                <button mat-button (click)="doAction()" [disabled]="!userForm.valid || emailExists" type="submit" class="submit fb">{{action}}
+                    <span class="material-symbols-outlined action-icon">
+                        {{action == "Add"? "add_circle": "update"}}
+                    </span>
+                </button>
+            </div>
+            <div>
+                <button mat-button (click)="closeDialog()" class="cancel fb">Cancel 
+                    <span class="material-symbols-outlined action-icon">
+                        cancel
+                    </span>
+                </button>
+            </div>
+        </div>
     </form>
 </div>
 <ng-template #elseTemplate>
     <div class="delete-text">
-        Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}</b> account?
+        Are you sure you want to delete <b>{{local_data.firstName}} {{local_data.lastName}}{{local_data.lastName.endsWith("s")?"'":"'s"}}</b> account?
     </div>
     <div class="delete-profile f">
         <div fxLayout="row" fxLayoutGap="10px">
@@ -88,7 +105,7 @@
                 <div class="name">
                     {{local_data.firstName}} {{local_data.lastName}}
                 </div>
-                <div class="email">
+                <div>
                     {{local_data.email}} 
                 </div>
                 <div fxLayout="row">
@@ -99,23 +116,24 @@
             </div>
         </div>
     </div>
+    <mat-divider></mat-divider>
+        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+            <div>
+                <button mat-button (click)="doAction()" type="submit" class="submit fb">{{action}}
+                    <span class="material-symbols-outlined action-icon">
+                        delete
+                    </span>
+                </button>
+            </div>
+            <div>
+                <button mat-button (click)="closeDialog()" class="cancel fb">Cancel 
+                    <span class="material-symbols-outlined action-icon">
+                        cancel
+                    </span>
+                </button>
+            </div>
+        </div>
 </ng-template>
 </div>
-<mat-divider></mat-divider>
-<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
-    <div>
-        <button mat-button (click)="doAction()" [disabled]="emailExists && action=='Add'" type="submit" class="submit fb">{{action}}
-            <span class="material-symbols-outlined action-icon">
-                {{action == "Add"? "add_circle": action == "Update" ? "update" : "delete"}}
-            </span>
-        </button>
-    </div>
-    <div>
-        <button mat-button (click)="closeDialog()" class="cancel fb">Cancel 
-            <span class="material-symbols-outlined action-icon">
-                cancel
-            </span>
-        </button>
-    </div>
-</div>
+
 </div>
