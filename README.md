@@ -2,6 +2,18 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
+## Prerequisites
+
+You need to have an angular environment setup to run this project locally. For instructions on how to set up your angular environment locally [Angular Setup](https://angular.io/guide/setup-local).
+
+Once your angular environment is setup, follow the steps below to run this application.
+1. Install the Angular CLI `npm install -g @angular/cli`
+2. Clone the repository to your local machine.
+3. Open the terminal in the project repository.
+4. Run `npm install` to install all the dependencies.
+5. Run `ng serve -o` to run the application and have it open in your default browser.
+6. Play around with the application and enjoy! :)
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
