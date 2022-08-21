@@ -1,8 +1,11 @@
-# UserManagement
+# User Management Application
+This is a basic application developed with Angular for managing users. Each user consists of an id, email, first name, last name, role (doctor, admin, accountant) and status (active, inactive). The application allows you to perform CRUD (Create, Read, Update, Delete) operations on the user data.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+This application is a client-side only solution, meaning that any edits done are stored in an object array.
+
 
 ## Prerequisites
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
 You need to have an angular environment setup to run this project locally. For instructions on how to set up your angular environment locally [Angular Setup](https://angular.io/guide/setup-local).
 
