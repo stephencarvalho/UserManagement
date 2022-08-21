@@ -33,7 +33,6 @@ export class EditUserModalComponent implements OnInit {
     public dialogRef: MatDialogRef<EditUserModalComponent>,
     //@Optional() is used to prevent error if no data is passed
     @Optional() @Inject(MAT_DIALOG_DATA) public data: User) {
-      console.log(data);
       this.local_data = {...data};
       this.action = this.local_data.action;
     }
@@ -41,7 +40,6 @@ export class EditUserModalComponent implements OnInit {
     
     doAction(){
       this.dialogRef.close({event:this.action,data:this.local_data});
-      console.log(this.userForm.value);
     }
     
     closeDialog(){

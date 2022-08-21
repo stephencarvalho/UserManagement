@@ -2,8 +2,8 @@
     <div class="fxb">{{action}} User</div>
     <div mat-dialog-content>
         <div *ngIf="action != 'Delete'; else elseTemplate">
-            <form #userForm="ngForm" (ngSubmit)="doAction()"> 
-                <label>Email</label>
+            <form #userForm="ngForm"> 
+                <label>Email<span class="required">*</span></label>
                 <mat-form-field appearance="outline">
                     <input (keyup)="checkEmail($event)" 
                     required 
@@ -14,10 +14,10 @@
                     #email="ngModel" 
                     email> 
                     <mat-error *ngIf="!email.valid">Enter a valid Email</mat-error> 
-                    <mat-hint *ngIf="emailExists">This email already exists</mat-hint> 
+                    <mat-hint *ngIf="emailExists && action=='Add'">This email already exists</mat-hint> 
                 </mat-form-field>
                 
-                <label>First Name</label>
+                <label>First Name<span class="required">*</span></label>
                 <mat-form-field appearance="outline">
                     <input placeholder="{{action}} First Name"
                     required
@@ -29,7 +29,7 @@
                     <mat-error *ngIf="!firstName.valid">First Name is Required</mat-error> 
                 </mat-form-field>
                 
-                <label>Last Name</label>
+                <label>Last Name<span class="required">*</span></label>
                 <mat-form-field appearance="outline">
                     <input placeholder="{{action}} Last Name" 
                     required name="lastName" 
@@ -40,7 +40,7 @@
                     <mat-error *ngIf="!lastName.valid">Last Name is Required</mat-error> 
                 </mat-form-field>
                 
-                <label>Role</label>
+                <label>Role<span class="required">*</span></label>
                 <mat-form-field appearance="outline">
                     <mat-select name="role" 
                     matInput 
@@ -56,7 +56,7 @@
                 <mat-error *ngIf="!role.valid">Role is Required</mat-error>
             </mat-form-field>
             
-            <label>Status</label>
+            <label>Status<span class="required">*</span></label>
             <mat-form-field appearance="outline">
                 <mat-select 
                 name="status" 
@@ -78,9 +78,22 @@
     Sure to delete <b>{{local_data.name}}</b>?
 </ng-template>
 </div>
-<div mat-dialog-actions>
-    <button mat-button [disabled]="emailExists" type="submit">{{action}}</button>
-    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
-</div>
-
+<div mat-dialog-actions fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="20px">
+    <div>
+        <button mat-button (click)="doAction()" [disabled]="emailExists && action=='Add'" type="submit" class="submit">{{action}}
+            <span class="material-symbols-outlined action-icon">
+                {{action == "Add"? "add_circle": action == "Update" ? "update" : "delete"}}
+            </span></button>
+    </div>
+    <div>
+        <button mat-button (click)="closeDialog()" class="cancel">Cancel 
+            <span class="material-symbols-outlined action-icon">
+                cancel
+            </span>
+        </button>
+    </div>
+    
+    
+    </div>
+    
 </div>

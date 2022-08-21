@@ -22,24 +22,15 @@ export class UserComponent implements OnInit {
     'status',
     'edit-delete'
   ];
-  
-  
-
-// get randomImage() {
-//   return this.imgArray[Math.floor(Math.random()*this.imgArray.length)];
-// }
 
 dataSource = this.dataService.UserData;
 
 constructor(private dataService: DataserviceService,
   public dialog: MatDialog) { }
   
-  // get totalUsers() {
-  //   return 
-  // }
-  
   ngOnInit(): void {
   }
+
   openDialog(action,obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(EditUserModalComponent, {
@@ -69,13 +60,12 @@ constructor(private dataService: DataserviceService,
       status: row_obj.status,
       img: this.dataService.randomImage
     });
-    console.log(this.dataService.UserData);
     this.table.renderRows();
     ++this.totalUsers;
     
   }
   updateRowData(row_obj){
-    this.dataSource = this.dataSource.filter((value,key)=>{
+    this.dataSource = this.dataSource.filter((value)=>{
       if(value.id == row_obj.id){
         value.email = row_obj.email;
         value.firstName = row_obj.firstName;
@@ -83,25 +73,14 @@ constructor(private dataService: DataserviceService,
         value.role = row_obj.role;
         value.status = row_obj.status;
       }
-      console.log(this.dataService.UserData);
       return true;
     });
   }
   deleteRowData(row_obj){
-    let index;
-    for(let data of this.dataSource)
-    {
-      let temp = 0;
-      if(data.id==row_obj.id) {
-        index = temp;
-        this.dataSource.splice(index, 1);
-      }
-      temp++;
-    }
-    console.log(this.dataSource);
+    let indexOfObject = this.dataSource.findIndex(o => o.id === row_obj.id);
+    this.dataSource.splice(indexOfObject, 1);
     this.totalUsers--;
     this.table.renderRows();
-    return this.dataSource;
   }
   
   getnextId(): number {

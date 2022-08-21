@@ -1,3 +1,5 @@
+@import '../../assets/styles/global.scss';
+
 label {
     display: inherit;
     font-family: "new-hero-bold";
@@ -6,4 +8,20 @@ label {
     position: relative;
     top: -20px;
     right: -10px;
+}
+.required {
+    color: $secondary-sunset-100;
+}
+.submit {
+    background-color: $primary-midnight-50;
+    color: $white;
+}
+.cancel {
+    background-color: $secondary-sunset-100;
+    color: $white;
+}
+.action-icon {
+    font-size: 20px;
+    position: relative;
+    top: -1px;
 }
