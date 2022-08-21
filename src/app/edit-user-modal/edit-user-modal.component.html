@@ -2,60 +2,85 @@
     <div class="fxb">{{action}} User</div>
     <div mat-dialog-content>
         <div *ngIf="action != 'Delete'; else elseTemplate">
-            <form #userForm="ngForm" > 
+            <form #userForm="ngForm" (ngSubmit)="doAction()"> 
                 <label>Email</label>
                 <mat-form-field appearance="outline">
                     <input (keyup)="checkEmail($event)" 
                     required 
                     placeholder="{{action}} Email" 
-                    name="email" matInput 
+                    name="email" 
+                    matInput 
                     [(ngModel)]="local_data.email" 
                     #email="ngModel" 
                     email> 
-                    <mat-error *ngIf="!email.valid">Email is Required</mat-error> 
+                    <mat-error *ngIf="!email.valid">Enter a valid Email</mat-error> 
                     <mat-hint *ngIf="emailExists">This email already exists</mat-hint> 
                 </mat-form-field>
                 
                 <label>First Name</label>
                 <mat-form-field appearance="outline">
-                    <input placeholder="{{action}} First Name" required name="firstName" matInput [(ngModel)]="local_data.firstName" #firstName="ngModel"> 
+                    <input placeholder="{{action}} First Name"
+                    required
+                    name="firstName"
+                    matInput 
+                    [(ngModel)]="local_data.firstName" 
+                    firstName 
+                    #firstName="ngModel"> 
                     <mat-error *ngIf="!firstName.valid">First Name is Required</mat-error> 
                 </mat-form-field>
                 
                 <label>Last Name</label>
                 <mat-form-field appearance="outline">
-                    <input placeholder="{{action}} Last Name" required name="lastName" matInput [(ngModel)]="local_data.lastName" #lastName="ngModel">
+                    <input placeholder="{{action}} Last Name" 
+                    required name="lastName" 
+                    matInput 
+                    [(ngModel)]="local_data.lastName" 
+                    lastName 
+                    #lastName="ngModel">
                     <mat-error *ngIf="!lastName.valid">Last Name is Required</mat-error> 
                 </mat-form-field>
                 
                 <label>Role</label>
                 <mat-form-field appearance="outline">
-                    <mat-select name="role" matInput [(ngModel)]="local_data.role" placeholder="Select A Role" #role="ngModel" required>
-                        <mat-option *ngFor="let role of roles" [value]="role.value">
-                            {{role.label}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="!role.valid">Role is Required</mat-error>
-                </mat-form-field>
-                
-                <label>Status</label>
-                <mat-form-field appearance="outline">
-                    <mat-select name="status" matInput [(ngModel)]="local_data.status" placeholder="Select Status" #status="ngModel" required>
-                        <mat-option *ngFor="let status of statusOptions" [value]="status.value">
-                            {{status.label}}
-                        </mat-option>
-                    </mat-select>
-                    <mat-error *ngIf="!status.valid">Status is Required</mat-error>
-                </mat-form-field>
-            </form>
-        </div>
-        <ng-template #elseTemplate>
-            Sure to delete <b>{{local_data.name}}</b>?
-        </ng-template>
-    </div>
-    <div mat-dialog-actions>
-        <button mat-button (click)="doAction()" [disabled]="emailExists">{{action}}</button>
-        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
-    </div>
-    
+                    <mat-select name="role" 
+                    matInput 
+                    [(ngModel)]="local_data.role" 
+                    placeholder="Select A Role" 
+                    role 
+                    #role="ngModel" 
+                    required>
+                    <mat-option *ngFor="let role of roles" [value]="role.value">
+                        {{role.label}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="!role.valid">Role is Required</mat-error>
+            </mat-form-field>
+            
+            <label>Status</label>
+            <mat-form-field appearance="outline">
+                <mat-select 
+                name="status" 
+                matInput 
+                [(ngModel)]="local_data.status" 
+                placeholder="Select Status" 
+                status 
+                #status="ngModel" 
+                required>
+                <mat-option *ngFor="let status of statusOptions" [value]="status.value">
+                    {{status.label}}
+                </mat-option>
+            </mat-select>
+            <mat-error *ngIf="!status.valid">Status is Required</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<ng-template #elseTemplate>
+    Sure to delete <b>{{local_data.name}}</b>?
+</ng-template>
+</div>
+<div mat-dialog-actions>
+    <button mat-button [disabled]="emailExists" type="submit">{{action}}</button>
+    <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+</div>
+
 </div>

@@ -1,10 +1,9 @@
 import { Component, Inject, OnInit, Optional, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, NgForm, NG_VALIDATORS } from '@angular/forms';
+import { NgForm} from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DataserviceService } from '../dataservice.service';
 import { Select } from '../model/select.model';
 import { User } from '../model/user.model';
-import { UserComponent } from '../user/user.component';
 
 @Component({
   selector: 'app-edit-user-modal',
@@ -17,7 +16,6 @@ export class EditUserModalComponent implements OnInit {
   local_data:any;
   email:string;
   emailExists: boolean;
-  testEmailValidity: boolean = true;
   
   roles: Select[] = [
     {value: 'accountant', label: 'Accountant'},
@@ -40,8 +38,10 @@ export class EditUserModalComponent implements OnInit {
       this.action = this.local_data.action;
     }
     
+    
     doAction(){
       this.dialogRef.close({event:this.action,data:this.local_data});
+      console.log(this.userForm.value);
     }
     
     closeDialog(){
