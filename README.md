@@ -1,7 +1,7 @@
 # User Management Application
 This is a basic application developed with Angular for managing users. Each user consists of an id, email, first name, last name, role (doctor, admin, accountant) and status (active, inactive). The application allows you to perform CRUD (Create, Read, Update, Delete) operations on the user data.
 
-This application is a client-side only solution, meaning that any edits done are stored in an object array.
+This application is a client-side only solution, meaning that any edits done are stored locally.
 
 
 ## Prerequisites
@@ -19,7 +19,7 @@ Once your angular environment is setup, follow the steps below to run this appli
 
 ## Application Elements
 ### Home Page
-Home Page contains the user table that displays the list of existing users. On the home page you can add, update or delete an existing user.
+Home Page contains the user table that displays the list of existing users. On the home page you can Add, Update or Delete an existing user.
 <img width="1680" alt="Home-page" src="https://user-images.githubusercontent.com/30550056/185809187-b293ffb4-2086-4dec-ab4f-8c36392efd1c.png">
 
 ### Add Dialog
