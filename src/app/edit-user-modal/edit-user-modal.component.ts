@@ -37,15 +37,19 @@ export class EditUserModalComponent implements OnInit {
       this.action = this.local_data.action;
     }
     
-    
+    //Submit function that sends the action being performed along with the data to the user component
     doAction(){
       this.dialogRef.close({event:this.action,data:this.local_data});
     }
     
+    //close modal
     closeDialog(){
       this.dialogRef.close({event:'Cancel'});
     }
     
+    //function to check if email exist
+    //@param {any} event
+    //Sets the value of emailExists to true if match is found else false
     checkEmail(event: any) {
       this.email = event.target.value;
       this.emailExists = this.dataService.UserData.some((obj) => obj.email === this.email);

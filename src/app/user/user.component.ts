@@ -31,6 +31,7 @@ constructor(private dataService: DataserviceService,
   ngOnInit(): void {
   }
 
+  //open relevant dialog depending on the action button clicked
   openDialog(action,obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(EditUserModalComponent, {
@@ -49,6 +50,7 @@ constructor(private dataService: DataserviceService,
     });
   }
   
+  //function to add a user to the datasource array and render rows to update the table
   addRowData(row_obj){
     var d = new Date();
     this.dataSource.push({
@@ -64,6 +66,8 @@ constructor(private dataService: DataserviceService,
     ++this.totalUsers;
     
   }
+
+  //function to update a user object in the datasource array 
   updateRowData(row_obj){
     this.dataSource = this.dataSource.filter((value)=>{
       if(value.id == row_obj.id){
@@ -76,6 +80,8 @@ constructor(private dataService: DataserviceService,
       return true;
     });
   }
+
+  //function to delete a user from the datasource array and render rows to update the table
   deleteRowData(row_obj){
     let indexOfObject = this.dataSource.findIndex(o => o.id === row_obj.id);
     this.dataSource.splice(indexOfObject, 1);
@@ -83,6 +89,7 @@ constructor(private dataService: DataserviceService,
     this.table.renderRows();
   }
   
+  //function to generate the next ID for a new user. 
   getnextId(): number {
     let highest = 0;
     this.dataService.UserData.forEach(function (item) {
