@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { MatTable } from '@angular/material/table';
 import { DataserviceService } from '../dataservice.service';
 import { EditUserModalComponent } from '../edit-user-modal/edit-user-modal.component';
 
