@@ -7,7 +7,7 @@ This application is a client-side only solution, meaning that any edits done are
 ## Prerequisites
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
-You need to have an angular environment setup to run this project locally. For instructions on how to set up your angular environment locally [Angular Setup](https://angular.io/guide/setup-local).
+You need to have an angular environment setup to run this project locally. For instructions on how to set up your angular environment locally click the following link | [Angular Setup](https://angular.io/guide/setup-local).
 
 Once your angular environment is setup, follow the steps below to run this application.
 1. Install the Angular CLI `npm install -g @angular/cli`
