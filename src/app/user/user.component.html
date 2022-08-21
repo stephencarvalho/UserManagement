@@ -9,7 +9,7 @@
         <mat-card>
             <div fxLayout="row" fxLayoutGap="20px"  >
                 <div>
-                    <p class="fb tabl">Users</p> 
+                    <p class="fb table-header">Users</p> 
                 </div>
                 <mat-divider class="verticalDivider" [vertical]="true"></mat-divider>
                 <div>
@@ -75,13 +75,10 @@
                         </td>
                     </ng-container>
                     
-                    
                     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let userrow; columns: displayedColumns;"></tr>
                 </table>
             </div>
         </mat-card>
-        
-        
     </div>
 </div>
